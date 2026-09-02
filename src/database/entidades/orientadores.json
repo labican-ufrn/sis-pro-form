@@ -1,14 +1,41 @@
 [
-  {
-    "nome": "Orientador 1",
-    "cpf": "12345678900"
-  },
-  {
-    "nome": "Orientador 2",
-    "cpf": "23456789001"
-  },
-  {
-    "nome": "Orientador 3",
-    "cpf": "34567890102"
-  }
+	{
+		"id": 1,
+		"nome": "Prof. Roberto Alves Fernandes",
+		"cpf": "45678901234",
+		"email": "roberto.fernandes@ufrn.br",
+		"telefone": "84999112233",
+		"endereco": "Av. Senador Salgado Filho",
+		"numero": "3000",
+		"cep": "59078970",
+		"bairro": "Lagoa Nova",
+		"estado": "Rio Grande do Norte",
+		"cidade": "Natal"
+	},
+	{
+		"id": 2,
+		"nome": "Profa. Ana Beatriz Costa",
+		"cpf": "56789012345",
+		"email": "ana.costa@ufrn.br",
+		"telefone": "84988223344",
+		"endereco": "Rua da Aurora",
+		"numero": "150",
+		"cep": "59300000",
+		"bairro": "Centro",
+		"estado": "Rio Grande do Norte",
+		"cidade": "Caicó"
+	},
+	{
+		"id": 3,
+		"nome": "Prof. Felipe Nogueira Prado",
+		"cpf": "67890123456",
+		"email": "felipe.prado@ifrn.edu.br",
+		"telefone": "84977334455",
+		"endereco": "Rua José de Alencar",
+		"numero": "78",
+		"cep": "59600000",
+		"bairro": "Centro",
+		"estado": "Rio Grande do Norte",
+		"cidade": "Mossoró"
+	}
 ]
