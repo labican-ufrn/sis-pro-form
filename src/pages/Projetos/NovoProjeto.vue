@@ -1,6 +1,7 @@
 <template>
-	<FormularioCriarProjeto />
+	<FormularioMestre />
 </template>
+
 <script setup lang="ts">
-import FormularioCriarProjeto from '@/components/Formularios/FormularioCriarProjeto/FormularioCriarProjeto.vue'
+import FormularioMestre from '@/components/Formularios/FormularioMestre/FormularioMestre.vue'
 </script>
