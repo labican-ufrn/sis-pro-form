@@ -1,0 +1,24 @@
+[
+	{
+		"id": 1,
+		"titulo": "Saúde e Vida Nova",
+		"pesquisadorResponsavel": "Carlos Lima da Silveira Souza e Silva",
+		"instituicao": "Universidade Federal do Rio Grande do Norte",
+		"local": "Natal - RN",
+		"dataInicio": "01/03/2025",
+		"dataPrevistaFim": "01/03/2027",
+		"nivelAbrangencia": "Mestrado",
+		"slug": "saude_e_vida_nova"
+	},
+	{
+		"id": 2,
+		"titulo": "Estatística e Logística",
+		"pesquisadorResponsavel": "Jackson Jefferson Medeiros",
+		"instituicao": "Instituto Federal do Rio Grande do Norte",
+		"local": "Caicó - RN",
+		"dataInicio": "15/08/2025",
+		"dataPrevistaFim": "15/08/2026",
+		"nivelAbrangencia": "Graduação",
+		"slug": "estatistica_e_logistica"
+	}
+]

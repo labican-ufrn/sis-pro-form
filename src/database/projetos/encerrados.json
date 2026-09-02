@@ -1,0 +1,24 @@
+[
+	{
+		"id": 1,
+		"titulo": "Saneamento e Infraestrutura Urbana",
+		"pesquisadorResponsavel": "Mariana Elza Santos",
+		"instituicao": "Universidade Federal do Rio Grande do Norte",
+		"local": "Natal - RN",
+		"dataInicio": "10/01/2023",
+		"dataFim": "10/01/2025",
+		"nivelAbrangencia": "Doutorado",
+		"slug": "saneamento_e_infraestrutura_urbana"
+	},
+	{
+		"id": 2,
+		"titulo": "Política e Cidadania",
+		"pesquisadorResponsavel": "Lidia Willia de Araujo",
+		"instituicao": "Faculdade de Ciências Humanas e Sociais Integradas",
+		"local": "Mossoró - RN",
+		"dataInicio": "05/02/2022",
+		"dataFim": "05/02/2024",
+		"nivelAbrangencia": "Especialização",
+		"slug": "politica_e_cidadania"
+	}
+]
