@@ -111,7 +111,7 @@ const camposEnderecoParticipante = (prefixo: string): CampoRelatorio[] => [
 			{
 				tipo: 'texto',
 				nome: `${prefixo}Email`,
-				rotulo: 'Email',
+				rotulo: 'E-mail',
 				placeholder: 'johndoe@gmail.com',
 				required: true
 			}
@@ -739,7 +739,7 @@ export const relatoriosNecessarios: RelatorioDefinicao[] = [
 			{
 				tipo: 'lista-selecao',
 				nome: 'responsaveisInstituicao',
-				rotulo: 'Responsável pela instituição',
+				rotulo: 'Responsável(is) pela instituição',
 				placeholder: 'Selecione o responsável pela instituição',
 				labelBotao: 'ADICIONAR RESPONSÁVEL',
 				required: true
@@ -760,10 +760,10 @@ export const relatoriosNecessarios: RelatorioDefinicao[] = [
 				required: true
 			},
 			{
-				tipo: 'local',
+				tipo: 'texto',
 				nome: 'instituicao',
 				rotulo: 'Instituição / local de realização da pesquisa',
-				placeholder: 'Selecione o local',
+				placeholder: 'Ex: Universidade Federal do Rio Grande do Norte',
 				required: true
 			},
 			{
@@ -771,6 +771,7 @@ export const relatoriosNecessarios: RelatorioDefinicao[] = [
 				nome: 'envolveDadosSus',
 				rotulo: 'Sua pesquisa envolve dados do SUS?',
 				required: true,
+				direcao: 'linha',
 				opcoes: [
 					{ id: 'sus-sim', rotulo: 'Sim', valor: 'sim' },
 					{ id: 'sus-nao', rotulo: 'Não', valor: 'nao' }
@@ -783,12 +784,14 @@ export const relatoriosNecessarios: RelatorioDefinicao[] = [
 					'Em situações que o projeto submetido seja no âmbito de pesquisas com seres humanos em instituições do Sistema Único de Saúde - SUS, deve-se respeitar a Resolução 580/2018 (Art. 5º do CAPÍTULO II). Nesses casos, inserir na Carta de Anuência um dos parágrafos abaixo.',
 				required: true,
 				direcao: 'coluna',
-				opcoes: opcoesResolucao580
+				opcoes: opcoesResolucao580,
+				visivelQuando: { campo: 'envolveDadosSus', valor: 'sim' }
 			},
 			{
 				tipo: 'texto',
 				nome: 'justificativaResolucao',
 				placeholder: 'Descrever a justificativa',
+				required: true,
 				visivelQuando: { campo: 'paragrafoResolucao', valor: 'irao-interferir' }
 			},
 			campoLocalData(''),
@@ -822,7 +825,7 @@ export const relatoriosNecessarios: RelatorioDefinicao[] = [
 			{
 				tipo: 'lista-selecao',
 				nome: 'responsaveisInstituicao',
-				rotulo: 'Responsável pela instituição',
+				rotulo: 'Responsável(is) pela instituição',
 				placeholder: 'Selecione o responsável pela instituição',
 				labelBotao: 'ADICIONAR RESPONSÁVEL',
 				required: true
@@ -838,28 +841,29 @@ export const relatoriosNecessarios: RelatorioDefinicao[] = [
 			{
 				tipo: 'textarea',
 				nome: 'documentos',
-				rotulo: 'Quais documentos serão utilizados na pesquisa?',
-				placeholder: 'Descreva os documentos que serão utilizados',
+				rotulo: 'Citar os documentos que serão utilizados na pesquisa',
+				placeholder: 'Ex: prontuários, fichas de atendimento, registros acadêmicos...',
 				required: true
 			},
 			{
 				tipo: 'checkbox',
 				nome: 'autorizoDocumentos',
-				rotulo: 'Autorizo o uso dos documentos dos participantes para fins desta pesquisa',
+				rotulo:
+					'Autorizo o uso dos documentos dos participantes desta instituição para fins da pesquisa descrita acima',
 				required: true
 			},
 			{
 				tipo: 'textarea',
 				nome: 'finalidadeUso',
 				rotulo: 'Descrever a finalidade do uso dos documentos',
-				placeholder: 'Descreva a finalidade do uso dos documentos',
+				placeholder: 'Descreva para que os documentos serão utilizados nesta pesquisa',
 				required: true
 			},
 			{
 				tipo: 'textarea',
 				nome: 'guardaDocumentos',
-				rotulo: 'Como e onde os documentos serão armazenados?',
-				placeholder: 'Descreva a forma e o local de armazenamento',
+				rotulo: 'Informar como e onde os documentos serão armazenados e por quanto tempo',
+				placeholder: 'Descreva a forma, o local e o prazo de armazenamento',
 				required: true
 			},
 			{
@@ -882,7 +886,7 @@ export const relatoriosNecessarios: RelatorioDefinicao[] = [
 					{
 						tipo: 'texto',
 						nome: 'emailResponsavel',
-						rotulo: 'Email',
+						rotulo: 'E-mail',
 						placeholder: 'johndoe@gmail.com',
 						required: true
 					}
@@ -906,7 +910,7 @@ export const relatoriosNecessarios: RelatorioDefinicao[] = [
 			{
 				tipo: 'cnpj',
 				nome: 'cnpjAssinante',
-				rotulo: 'CNPJ',
+				rotulo: 'CNPJ do(a) assinante',
 				placeholder: '00.000.000/0001-00',
 				required: true
 			}
@@ -941,36 +945,37 @@ export const relatoriosNecessarios: RelatorioDefinicao[] = [
 			{
 				tipo: 'textarea',
 				nome: 'procedimentos',
-				rotulo: 'Descrever os procedimentos que serão utilizados',
-				placeholder: 'Descreva os procedimentos que serão utilizados na pesquisa',
+				rotulo: 'Descrever os procedimentos aos quais o participante será submetido',
+				placeholder: 'Descreva o que será feito com o participante durante a pesquisa',
 				required: true
 			},
 			{
 				tipo: 'textarea',
 				nome: 'riscos',
-				rotulo: 'Quais os riscos da participação nesta pesquisa?',
-				placeholder: 'Descreva os riscos envolvidos',
+				rotulo: 'Descrever os riscos e desconfortos esperados',
+				placeholder: 'Descreva os riscos e desconfortos da participação',
 				required: true
 			},
 			{
 				tipo: 'textarea',
 				nome: 'beneficios',
-				rotulo: 'Quais os benefícios da participação nesta pesquisa?',
-				placeholder: 'Descreva os benefícios envolvidos',
+				rotulo: 'Descrever os benefícios esperados',
+				placeholder: 'Descreva os benefícios esperados para o participante ou para a sociedade',
 				required: true
 			},
 			{
 				tipo: 'textarea',
 				nome: 'sigilo',
-				rotulo: 'Como será garantido o sigilo e a confidencialidade dos dados?',
-				placeholder: 'Descreva as medidas de sigilo e confidencialidade',
+				rotulo: 'Descrever as formas de garantia do sigilo e da privacidade',
+				placeholder: 'Descreva como o sigilo e a privacidade dos dados serão garantidos',
 				required: true
 			},
 			{
 				tipo: 'textarea',
 				nome: 'direitos',
-				rotulo: 'Quais os direitos do participante (incluindo a retirada do consentimento)?',
-				placeholder: 'Descreva os direitos do participante',
+				rotulo:
+					'Informar sobre a liberdade de recusar a participar ou de retirar o consentimento a qualquer momento',
+				placeholder: 'Descreva os direitos do participante, inclusive a retirada do consentimento',
 				required: true
 			},
 			{
@@ -984,7 +989,7 @@ export const relatoriosNecessarios: RelatorioDefinicao[] = [
 			{
 				tipo: 'texto',
 				nome: 'contatoPesquisador',
-				rotulo: 'Contato do pesquisador responsável',
+				rotulo: 'Nome e contato do pesquisador responsável',
 				placeholder: 'Ex: João Batista da Silva Medeiros — (84) 99999-9999',
 				required: true
 			},
@@ -1028,36 +1033,38 @@ export const relatoriosNecessarios: RelatorioDefinicao[] = [
 			{
 				tipo: 'textarea',
 				nome: 'procedimentos',
-				rotulo: 'Descrever os procedimentos que serão utilizados',
-				placeholder: 'Descreva os procedimentos que serão utilizados na pesquisa',
+				rotulo: 'Descrever os procedimentos aos quais o menor será submetido',
+				placeholder: 'Descreva o que será feito com o menor durante a pesquisa',
 				required: true
 			},
 			{
 				tipo: 'textarea',
 				nome: 'riscos',
-				rotulo: 'Quais os riscos da participação nesta pesquisa?',
-				placeholder: 'Descreva os riscos envolvidos',
+				rotulo: 'Descrever os riscos e desconfortos esperados',
+				placeholder: 'Descreva os riscos e desconfortos da participação do menor',
 				required: true
 			},
 			{
 				tipo: 'textarea',
 				nome: 'beneficios',
-				rotulo: 'Quais os benefícios da participação nesta pesquisa?',
-				placeholder: 'Descreva os benefícios envolvidos',
+				rotulo: 'Descrever os benefícios esperados',
+				placeholder: 'Descreva os benefícios esperados para o menor ou para a sociedade',
 				required: true
 			},
 			{
 				tipo: 'textarea',
 				nome: 'sigilo',
-				rotulo: 'Como será garantido o sigilo e a confidencialidade dos dados?',
-				placeholder: 'Descreva as medidas de sigilo e confidencialidade',
+				rotulo: 'Descrever as formas de garantia do sigilo e da privacidade',
+				placeholder: 'Descreva como o sigilo e a privacidade dos dados serão garantidos',
 				required: true
 			},
 			{
 				tipo: 'textarea',
 				nome: 'direitos',
-				rotulo: 'Quais os direitos do responsável e do menor (incluindo a retirada do consentimento)?',
-				placeholder: 'Descreva os direitos do responsável e do menor',
+				rotulo:
+					'Informar sobre a liberdade de recusar a participação do menor ou de retirar o consentimento a qualquer momento',
+				placeholder:
+					'Descreva os direitos do responsável e do menor, inclusive a retirada do consentimento',
 				required: true
 			},
 			{
