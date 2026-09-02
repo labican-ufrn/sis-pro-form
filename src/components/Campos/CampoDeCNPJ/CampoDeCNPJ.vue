@@ -1,14 +1,14 @@
 <template>
-	<div class="campo-de-cpf campo-container">
-		<label class="campo-de-cpf__rotulo rotulo" :class="exibirRotuloObrigatorio" :for="id">{{
+	<div class="campo-de-cnpj campo-container">
+		<label class="campo-de-cnpj__rotulo rotulo" :class="exibirRotuloObrigatorio" :for="id">{{
 			rotulo
 		}}</label>
 
 		<Field :name="nome" v-slot="{ value, handleChange }">
 			<InputMask
 				:id="id"
-				class="campo-de-cpf__campo campo"
-				mask="999.999.999-99"
+				class="campo-de-cnpj__campo campo"
+				mask="99.999.999/9999-99"
 				:placeholder="textoAuxiliar"
 				:modelValue="value"
 				@update:modelValue="handleChange"
