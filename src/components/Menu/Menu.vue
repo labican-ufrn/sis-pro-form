@@ -67,6 +67,16 @@
 					</li>
 				</ul>
 			</div>
+			<div class="secao">
+				<div class="secao__titulo">OUTRAS AÇÕES</div>
+				<ul class="secao__menu">
+					<li class="secao__item">
+						<button class="secao__link secao__link--botao" type="button" @click="sair">
+							<i class="pi pi-sign-out"></i>Sair
+						</button>
+					</li>
+				</ul>
+			</div>
 		</div>
 	</Sidebar>
 </template>
@@ -78,6 +88,10 @@ import Sidebar from 'primevue/sidebar'
 
 const redirecionarParaNovoProjeto = () => {
 	router.push('/projetos/novo')
+}
+
+const sair = () => {
+	router.push({ name: 'Login' })
 }
 </script>
 
@@ -131,13 +145,24 @@ const redirecionarParaNovoProjeto = () => {
 			display: flex;
 			flex-direction: row;
 			align-items: center;
-			color: var(--gray-500);
+			width: 100%;
+			color: var(--gray-700);
 			text-decoration: none;
 			gap: var(--g-8);
 			padding: var(--p-14);
+			border: 0;
+			background: transparent;
+			font: inherit;
+			text-align: left;
+			cursor: pointer;
 
 			&:hover {
 				background-color: var(--gray-50);
+			}
+
+			&--botao {
+				font-size: var(--fs-14);
+				font-weight: 500;
 			}
 		}
 	}
