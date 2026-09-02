@@ -1,32 +1,52 @@
 [
-  {
-    "nome": "Dr. Marcelo Henrique Silva",
-    "cargo": "Reitor",
-    "nomeDaInstituicao": "Universidade Federal de Tecnologia e Inovação",
-    "cnpjDaInstituicao": "10.234.567/0001-89"
-  },
-  {
-    "nome": "Profa. Camila Duarte Almeida",
-    "cargo": "Diretora Acadêmica",
-    "nomeDaInstituicao": "Faculdade de Ciências Humanas e Sociais Integradas",
-    "cnpjDaInstituicao": "20.345.678/0001-45"
-  },
-  {
-    "nome": "Prof. Eduardo Lima Ramos",
-    "cargo": "Coordenador de Pesquisa",
-    "nomeDaInstituicao": "Escola Técnica de Saúde Pública do Nordeste",
-    "cnpjDaInstituicao": "30.456.789/0001-32"
-  },
-  {
-    "nome": "Dra. Patrícia Gomes Vieira",
-    "cargo": "Presidente do Comitê de Ética",
-    "nomeDaInstituicao": "Instituto Nacional de Bioética e Pesquisa Clínica",
-    "cnpjDaInstituicao": "40.567.890/0001-67"
-  },
-  {
-    "nome": "Sr. Rafael Tavares Monteiro",
-    "cargo": "Gerente de Projetos",
-    "nomeDaInstituicao": "Centro de Inovação Tecnológica do Sul",
-    "cnpjDaInstituicao": "50.678.901/0001-23"
-  }
+	{
+		"id": 1,
+		"nome": "Dr. Marcelo Henrique Silva",
+		"cargo": "Reitor",
+		"nomeDaInstituicao": "Universidade Federal de Tecnologia e Inovação",
+		"cnpjDaInstituicao": "10234567000189",
+		"telefone": "8432110001",
+		"email": "gabinete@ufti.edu.br",
+		"cep": "59064000"
+	},
+	{
+		"id": 2,
+		"nome": "Profa. Camila Duarte Almeida",
+		"cargo": "Diretora Acadêmica",
+		"nomeDaInstituicao": "Faculdade de Ciências Humanas e Sociais Integradas",
+		"cnpjDaInstituicao": "20345678000145",
+		"telefone": "8433220002",
+		"email": "diretoria@fchsi.edu.br",
+		"cep": "59605000"
+	},
+	{
+		"id": 3,
+		"nome": "Prof. Eduardo Lima Ramos",
+		"cargo": "Coordenador de Pesquisa",
+		"nomeDaInstituicao": "Escola Técnica de Saúde Pública do Nordeste",
+		"cnpjDaInstituicao": "30456789000132",
+		"telefone": "8434330003",
+		"email": "pesquisa@etspn.edu.br",
+		"cep": "59020000"
+	},
+	{
+		"id": 4,
+		"nome": "Dra. Patrícia Gomes Vieira",
+		"cargo": "Presidente do Comitê de Ética",
+		"nomeDaInstituicao": "Instituto Nacional de Bioética e Pesquisa Clínica",
+		"cnpjDaInstituicao": "40567890000167",
+		"telefone": "8435440004",
+		"email": "cep@inbpc.org.br",
+		"cep": "59078000"
+	},
+	{
+		"id": 5,
+		"nome": "Sr. Rafael Tavares Monteiro",
+		"cargo": "Gerente de Projetos",
+		"nomeDaInstituicao": "Centro de Inovação Tecnológica do Sul",
+		"cnpjDaInstituicao": "50678901000123",
+		"telefone": "8436550005",
+		"email": "projetos@cits.org.br",
+		"cep": "59092000"
+	}
 ]

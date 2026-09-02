@@ -1,62 +1,119 @@
 <template>
-	<div class="pesquisadores">
-		<div class="pesquisadores__cabecalho">
-			<h1 class="pesquisadores__titulo">Instituições</h1>
-			<p class="pesquisadores__descricao">
-				Todas as instituições já cadastrados no sistema estão listados aqui, eles podem
-				ser visualizados por outros usuários e utilizados na criação de outros projetos de
-				pesquisa para facilitar no reaproveitamento dos dados. Você pode criar novos
-				instituições ou atualizar os já existentes.
+	<div class="entidades">
+		<header class="entidades__cabecalho">
+			<h1 class="entidades__titulo">Instituições</h1>
+			<p class="entidades__descricao">
+				Todas as instituições já cadastradas no sistema estão listadas aqui. Elas podem
+				ser visualizadas por outros usuários e utilizadas na criação de projetos de
+				pesquisa para facilitar o reaproveitamento dos dados. Você pode criar novas
+				instituições ou atualizar as já existentes.
 			</p>
-			<div class="pesquisadores__busca">
-				<CampoDeTexto
-					id="buscaPesquisadorResponsavel"
-					nome="buscaPesquisadorResponsavel"
-					v-model="buscaPesquisadorResponsavel"
-					texto-auxiliar="Buscar instituições..."
-				/>
-				<Button
-					class="formulario__enviar"
-					label="NOVA INSTITUIÇÃO"
-					size="small"
-					icon="pi pi-plus"
-				/>
-			</div>
-		</div>
-		<div class="pesquisadores__conteudo">
-			<ListaPesquisadoresResponsaveis
-				:dados="storePesquisadores.pesquisadoresResponsaveis"
+		</header>
+
+		<div class="entidades__acoes">
+			<InputText
+				id="busca-instituicao"
+				v-model="busca"
+				class="entidades__busca"
+				placeholder="Buscar instituição..."
+				size="small"
 			/>
+			<Button
+				label="NOVA INSTITUIÇÃO"
+				size="small"
+				icon="pi pi-plus"
+				@click="irParaNova"
+			/>
+		</div>
+
+		<div class="entidades__conteudo">
+			<ListaInstituicoes :dados="filtradas" @editar="editar" @excluir="excluir" />
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
-import CampoDeTexto from '@/components/Campos/CampoDeTexto/CampoDeTexto.vue'
-import ListaPesquisadoresResponsaveis from '@/components/ListaDeDados/ListaPesquisadoresResponsaveis.vue'
-import { usePesquisadoreResponsaveisStore } from '@/store/pesquisadoresResponsaveis'
+import ListaInstituicoes from '@/components/ListaDeDados/ListaInstituicoes.vue'
+import { useInstituicoesStore } from '@/store/instituicoes'
 import Button from 'primevue/button'
-import { ref } from 'vue'
+import InputText from 'primevue/inputtext'
+import { computed, ref } from 'vue'
+import { useRouter } from 'vue-router'
 
-const storePesquisadores = usePesquisadoreResponsaveisStore()
+const router = useRouter()
+const store = useInstituicoesStore()
+const busca = ref('')
 
-const buscaPesquisadorResponsavel = ref<string>('')
+const filtradas = computed(() => {
+	const termo = busca.value.trim().toLowerCase()
+	if (!termo) return store.instituicoes
+
+	return store.instituicoes.filter(item =>
+		[
+			item.nomeDaInstituicao,
+			item.nome,
+			item.cargo,
+			item.cnpjDaInstituicao,
+			item.email,
+			item.telefone
+		]
+			.filter(Boolean)
+			.some(campo => String(campo).toLowerCase().includes(termo))
+	)
+})
+
+const irParaNova = () => {
+	router.push({ name: 'Nova Instituição' })
+}
+
+const editar = (id: number) => {
+	router.push({ name: 'Editar Instituição', params: { id: String(id) } })
+}
+
+const excluir = (id: number) => {
+	store.remover(id)
+}
 </script>
 
 <style scoped lang="scss">
-.pesquisadores {
+.entidades {
+	display: flex;
+	flex-direction: column;
+	gap: var(--g-16);
 	width: 100%;
 
+	&__cabecalho {
+		display: flex;
+		flex-direction: column;
+		gap: var(--g-8);
+	}
+
 	&__titulo {
-		margin-bottom: var(--m-8);
+		color: var(--dark);
+		font-size: var(--fs-32);
+		font-weight: 700;
 	}
 
 	&__descricao {
-		margin-bottom: var(--m-16);
+		color: var(--gray-700);
+		font-size: var(--fs-14);
+		font-weight: 500;
 	}
 
-	&__cabecalho {
-		margin-bottom: var(--m-16);
+	&__acoes {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--g-8);
+		width: 100%;
+	}
+
+	&__busca {
+		width: 100%;
+	}
+
+	&__conteudo {
+		width: 100%;
 	}
 }
 </style>
