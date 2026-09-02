@@ -1,10 +1,28 @@
 [
-  {
-    "nome": "Orientando 1",
-    "cpf": "12345678900"
-  },
-  {
-    "nome": "Orientando 2",
-    "cpf": "23456789001"
-  }
+	{
+		"id": 1,
+		"nome": "Lucas Henrique Barbosa",
+		"cpf": "78901234567",
+		"email": "lucas.barbosa@ufrn.edu.br",
+		"telefone": "84966445566",
+		"endereco": "Rua das Orquídeas",
+		"numero": "42",
+		"cep": "59020000",
+		"bairro": "Petrópolis",
+		"estado": "Rio Grande do Norte",
+		"cidade": "Natal"
+	},
+	{
+		"id": 2,
+		"nome": "Camila Souza Ribeiro",
+		"cpf": "89012345678",
+		"email": "camila.ribeiro@ufrn.edu.br",
+		"telefone": "84955556677",
+		"endereco": "Travessa do Sol",
+		"numero": "9",
+		"cep": "59140000",
+		"bairro": "Centro",
+		"estado": "Rio Grande do Norte",
+		"cidade": "Parnamirim"
+	}
 ]
