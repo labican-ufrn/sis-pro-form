@@ -109,14 +109,47 @@
 					:placeholder="campo.placeholderFim ?? 'Ex: 10'"
 					size="small"
 				/>
-				<span class="campo-relatorio__faixa-sufixo">{{ campo.rotuloSufixo ?? 'anos' }}</span>
+				<span
+					class="campo-relatorio__faixa-sufixo"
+					:class="{ 'rotulo--obrigatorio': campo.required }"
+				>
+					{{ campo.rotuloSufixo ?? 'anos' }}
+				</span>
 			</div>
 		</template>
 
 		<template v-else-if="campo.tipo === 'linha-manual'">
-			<p class="campo-relatorio__linha-manual" :class="{ 'rotulo--obrigatorio': campo.required }">
-				{{ campo.rotulo }}
-			</p>
+			<div
+				class="campo-relatorio__manual"
+				:class="`campo-relatorio__manual--${campo.variante ?? 'linha'}`"
+			>
+				<p
+					v-if="campo.variante === 'titulo'"
+					class="campo-relatorio__manual-titulo"
+				>
+					{{ campo.rotulo }}
+				</p>
+				<template v-else-if="campo.variante === 'local-data'">
+					<span
+						class="rotulo campo-relatorio__linha-manual"
+						:class="{ 'rotulo--obrigatorio': campo.required }"
+					>
+						{{ campo.rotulo }}
+					</span>
+					<p class="campo-relatorio__manual-modelo">
+						Local, ________ de _______________ de ________.
+					</p>
+				</template>
+				<template v-else>
+					<span
+						class="rotulo campo-relatorio__linha-manual"
+						:class="{ 'rotulo--obrigatorio': campo.required }"
+					>
+						{{ campo.rotulo }}
+					</span>
+					<div class="campo-relatorio__manual-linha" aria-hidden="true" />
+				</template>
+			</div>
 		</template>
 
 		<template v-else-if="campo.tipo === 'checkbox' && campo.nome">
@@ -573,6 +606,36 @@ const chaveSubcampo = (subcampo: CampoRelatorio, indice: number) =>
 		color: var(--gray);
 		font-size: var(--fs-14);
 		font-weight: 500;
+	}
+
+	&__manual {
+		display: flex;
+		flex-direction: column;
+		gap: var(--g-8);
+		width: 100%;
+	}
+
+	&__manual-titulo {
+		margin: var(--g-8) 0 0;
+		color: var(--dark);
+		font-size: var(--fs-14);
+		font-weight: 700;
+	}
+
+	&__manual-linha {
+		width: 100%;
+		height: 40px;
+		border-bottom: 1px solid var(--gray);
+	}
+
+	&__manual-modelo {
+		margin: 0;
+		padding: 8px 0 6px;
+		border-bottom: 1px solid var(--gray);
+		color: var(--gray);
+		font-size: var(--fs-14);
+		font-weight: 500;
+		letter-spacing: 0.02em;
 	}
 
 	&__checkbox {

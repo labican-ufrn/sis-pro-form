@@ -17,6 +17,8 @@ export type TipoCampo =
 	| 'linha-manual'
 	| 'grupo'
 
+export type VarianteLinhaManual = 'linha' | 'local-data' | 'assinatura' | 'titulo'
+
 export interface CampoRelatorio {
 	tipo: TipoCampo
 	nome?: string
@@ -33,6 +35,7 @@ export interface CampoRelatorio {
 	nomeFim?: string
 	nomeEstadoVinculado?: string
 	nomeCidadeVinculada?: string
+	variante?: VarianteLinhaManual
 	visivelQuando?: { campo: string; valor: string }
 }
 
@@ -1095,7 +1098,7 @@ export const relatoriosNecessarios: RelatorioDefinicao[] = [
 	},
 	{
 		passo: 10,
-		titulo: 'TALE',
+		titulo: 'TALE (Termo de Assentimento Livre e Esclarecido)',
 		campos: [
 			{
 				tipo: 'texto',
@@ -1194,8 +1197,8 @@ export const relatoriosNecessarios: RelatorioDefinicao[] = [
 			},
 			{
 				tipo: 'linha-manual',
-				rotulo: 'Colocar uma linha para preenchimento do nome do participante da pesquisa manualmente',
-				required: true
+				variante: 'titulo',
+				rotulo: 'Assinaturas do termo (preenchimento manual)'
 			},
 			{
 				tipo: 'texto',
@@ -1206,19 +1209,14 @@ export const relatoriosNecessarios: RelatorioDefinicao[] = [
 			},
 			{
 				tipo: 'linha-manual',
-				rotulo:
-					'Colocar uma linha para preenchimento de local e data por extenso (Local, ____de _________de __________.)',
+				variante: 'local-data',
+				rotulo: 'Local e data',
 				required: true
 			},
 			{
 				tipo: 'linha-manual',
-				rotulo:
-					'Formulário de TERMO DE ASSENTIMENTO LIVRE E ESCLARECIDO (TALE) para ser assinado manualmente',
-				required: true
-			},
-			{
-				tipo: 'linha-manual',
-				rotulo: 'Colocar uma linha para preenchimento do nome do participante da pesquisa manualmente',
+				variante: 'assinatura',
+				rotulo: 'Assinatura do menor',
 				required: true
 			},
 			{
@@ -1230,18 +1228,14 @@ export const relatoriosNecessarios: RelatorioDefinicao[] = [
 			},
 			{
 				tipo: 'linha-manual',
-				rotulo:
-					'Colocar uma linha para preenchimento de local e data por extenso (Local, ____de _________de __________.)',
+				variante: 'local-data',
+				rotulo: 'Local e data',
 				required: true
 			},
 			{
 				tipo: 'linha-manual',
-				rotulo: 'Assinatura do menor (preenchimento manual)',
-				required: true
-			},
-			{
-				tipo: 'linha-manual',
-				rotulo: 'Assinatura do pesquisador(a) (preenchimento manual)',
+				variante: 'assinatura',
+				rotulo: 'Assinatura do pesquisador(a)',
 				required: true
 			}
 		]
