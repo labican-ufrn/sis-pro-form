@@ -83,10 +83,14 @@
 
 <script setup lang="ts">
 import { router } from '@/router'
+import { useProjetosStore } from '@/store/projetos'
 import Button from 'primevue/button'
 import Sidebar from 'primevue/sidebar'
 
+const storeProjetos = useProjetosStore()
+
 const redirecionarParaNovoProjeto = () => {
+	storeProjetos.iniciarNovo()
 	router.push('/projetos/novo')
 }
 

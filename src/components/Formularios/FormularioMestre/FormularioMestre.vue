@@ -109,10 +109,13 @@ import SeletorRadio, {
 import Button from 'primevue/button'
 import InputText from 'primevue/inputtext'
 import RadioButton from 'primevue/radiobutton'
-import { reactive } from 'vue'
+import { useProjetosStore } from '@/store/projetos'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
+const storeProjetos = useProjetosStore()
+storeProjetos.garantirRascunho()
+const formulario = storeProjetos.rascunho.mestre
 
 const opcoesTipoPesquisador: OpcoesSeletorRadio[] = [
 	{ id: 'orientador', rotulo: 'Orientador', valor: 'orientador' },
@@ -172,15 +175,6 @@ const formulariosNecessarios = [
 	'TCLE ou RCLE (Para os Pais ou Responsáveis dos Menores de 18 Anos)',
 	'TALE'
 ]
-
-const formulario = reactive({
-	tipoPesquisador: '',
-	envolveDadosSus: 'nao',
-	nivelAbrangencia: 'outro',
-	nivelAbrangenciaOutro: '',
-	paragrafoResolucao: 'irao-interferir',
-	justificativaResolucao: ''
-})
 
 const avancar = () => {
 	router.push({ name: 'Dados Gerais do Projeto' })

@@ -26,6 +26,7 @@
 import CampoRelatorio from '@/components/Formularios/Relatorios/CampoRelatorio.vue'
 import { relatoriosNecessarios } from '@/components/Formularios/Relatorios/definicoesRelatorios'
 import StepperRelatorios from '@/components/Formularios/Relatorios/StepperRelatorios.vue'
+import { useProjetosStore } from '@/store/projetos'
 import { useRelatoriosStore } from '@/store/relatorios'
 import Button from 'primevue/button'
 import { computed, watch } from 'vue'
@@ -36,6 +37,7 @@ const TOTAL_PASSOS = relatoriosNecessarios.length
 const route = useRoute()
 const router = useRouter()
 const store = useRelatoriosStore()
+const storeProjetos = useProjetosStore()
 
 const passo = computed(() => {
 	const numero = Number(route.params.passo)
@@ -87,6 +89,7 @@ const avancar = () => {
 		irParaPasso(passo.value + 1)
 		return
 	}
+	storeProjetos.concluirRascunho()
 	router.push({ name: 'Projetos atuais' })
 }
 </script>

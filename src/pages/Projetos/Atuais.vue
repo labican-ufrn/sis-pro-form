@@ -60,6 +60,7 @@ const projetosFiltrados = computed(() => {
 })
 
 const irParaNovoProjeto = () => {
+	store.iniciarNovo()
 	router.push({ name: 'Novo Projeto' })
 }
 </script>

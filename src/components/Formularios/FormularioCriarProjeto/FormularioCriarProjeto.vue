@@ -278,11 +278,12 @@ import SeletorRadio, {
 import orientadoresJson from '@/database/entidades/orientadores.json'
 import orientandosJson from '@/database/entidades/orientandos.json'
 import { usePesquisadoreResponsaveisStore } from '@/store/pesquisadoresResponsaveis'
+import { useProjetosStore } from '@/store/projetos'
 import Button from 'primevue/button'
 import Dropdown from 'primevue/dropdown'
 import InputText from 'primevue/inputtext'
 import Textarea from 'primevue/textarea'
-import { computed, reactive, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 
 interface PessoaOpcao {
@@ -291,6 +292,9 @@ interface PessoaOpcao {
 
 const router = useRouter()
 const storePesquisadores = usePesquisadoreResponsaveisStore()
+const storeProjetos = useProjetosStore()
+storeProjetos.garantirRascunho()
+const formulario = storeProjetos.rascunho.dadosGerais
 
 const opcoesPesquisadores = computed(() => storePesquisadores.pesquisadoresResponsaveis)
 
@@ -322,23 +326,6 @@ const formulariosNecessarios = [
 	'TALE'
 ]
 
-const formulario = reactive({
-	pesquisadorResponsavel: null as PessoaOpcao | null,
-	nomePesquisador: '',
-	tituloPesquisa: '',
-	tipoPesquisador: '',
-	orientadores: [] as string[],
-	orientandos: [] as string[],
-	localPesquisa: '',
-	nomeSetor: '',
-	objetivosPesquisa: '',
-	etapasPesquisa: '',
-	envolveDadosSus: 'nao',
-	cnpjInstituicao: '',
-	cepInstituicao: '',
-	metodologia: ''
-})
-
 const orientadorSelecionado = ref<PessoaOpcao | null>(null)
 const orientandoSelecionado = ref<PessoaOpcao | null>(null)
 
@@ -359,6 +346,18 @@ const preencherNomePesquisador = (pesquisador: PessoaOpcao | null) => {
 		formulario.nomePesquisador = pesquisador.nome
 	}
 }
+
+watch(
+	() => formulario.pesquisadorResponsavel?.nome,
+	nome => {
+		if (!nome) return
+		const correspondente = opcoesPesquisadores.value.find(item => item.nome === nome)
+		if (correspondente && correspondente !== formulario.pesquisadorResponsavel) {
+			formulario.pesquisadorResponsavel = correspondente
+		}
+	},
+	{ immediate: true }
+)
 
 const adicionarOrientador = () => {
 	if (!orientadorSelecionado.value) return

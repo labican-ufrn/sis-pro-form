@@ -12,6 +12,9 @@ export const useRelatoriosStore = defineStore('relatorios', {
 				this.passos[passo] = {}
 			}
 			return this.passos[passo]
+		},
+		limpar() {
+			this.passos = {}
 		}
 	}
 })
